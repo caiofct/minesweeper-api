@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_04_220347) do
+ActiveRecord::Schema.define(version: 2018_05_04_225936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "grids", force: :cascade do |t|
+    t.integer "width"
+    t.integer "height"
+    t.integer "status"
+    t.integer "number_of_mines"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_grids_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -23,4 +34,5 @@ ActiveRecord::Schema.define(version: 2018_05_04_220347) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "grids", "users"
 end

@@ -1,4 +1,4 @@
-class AuthorizeApiRequest
+class AuthorizeApiRequestService
   prepend SimpleCommand
 
   def initialize(headers = {})

@@ -8,6 +8,8 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 # require database cleaner at the top level
 require 'database_cleaner'
+require 'support/authentication_helpers'
+include AuthenticationHelpers
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -36,7 +38,7 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-RSpec.configuration do |config|
+RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
@@ -44,6 +46,7 @@ RSpec.configuration do |config|
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
 
+  config.include Rails.application.routes.url_helpers
   # add `FactoryBot` methods
   config.include FactoryBot::Syntax::Methods
 
