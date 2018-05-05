@@ -1,24 +1,32 @@
-# README
+# MineSweeper API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple minesweeper api that can allows for sign-up, sign-in, create a grid, toogle a flag on a square, explore a square and also detects when a game is over or won.
 
-Things you may want to cover:
+**Project made using Rails 5.2 and Ruby 2.5.0**
 
-* Ruby version
+**Tests made with rspec**
 
-* System dependencies
+**To use the api you can follow the below postman documentation that describes all the available REST resources and endpoints**
 
-* Configuration
+```sh
+[API Documentation](https://documenter.getpostman.com/view/1681883/mines/RVuAA6Y1)
+```
 
-* Database creation
+To run the project
 
-* Database initialization
+```sh
+$ bundle install
+$ rails s
+```
 
-* How to run the test suite
+To run the tests
 
-* Services (job queues, cache servers, search engines, etc.)
+```sh
+$ rspec
+```
 
-* Deployment instructions
+OR
 
-* ...
+```sh
+bundle exec rake spec
+```
