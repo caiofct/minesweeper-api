@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_04_225936) do
+ActiveRecord::Schema.define(version: 2018_05_05_171859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 2018_05_04_225936) do
     t.index ["user_id"], name: "index_grids_on_user_id"
   end
 
+  create_table "squares", force: :cascade do |t|
+    t.integer "x"
+    t.integer "y"
+    t.integer "mines", default: 0
+    t.bigint "grid_id"
+    t.boolean "flagged", default: false
+    t.boolean "explored", default: false
+    t.boolean "mine", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grid_id"], name: "index_squares_on_grid_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -35,4 +48,5 @@ ActiveRecord::Schema.define(version: 2018_05_04_225936) do
   end
 
   add_foreign_key "grids", "users"
+  add_foreign_key "squares", "grids"
 end

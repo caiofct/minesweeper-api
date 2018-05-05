@@ -3,5 +3,12 @@ Rails.application.routes.draw do
   post 'authenticate', to: 'authentication#authenticate'
   # Creates a user
   resources :users, only: [:create]
-  resources :grids, only: [:index, :create, :destroy]
+  resources :grids, only: [:index, :create, :destroy] do
+    resources :squares, only: [:index] do
+      collection do
+        put ":x/:y/toggle_flag", action: :toggle_flag
+        put ":x/:y/explore", action: :explore
+      end
+    end
+  end
 end

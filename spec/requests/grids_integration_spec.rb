@@ -16,9 +16,9 @@ RSpec.describe 'Grids Integration Spec', type: :request do
 
       expect(response).to have_http_status(:success)
       grids = JSON.parse(response.body)
-      expect(grids.length).to be 1
-      expect(grids.first['user_id']).to be user.id
-      expect(grids.first['id']).to be grid.id
+      expect(grids.length).to eq 1
+      expect(grids.first['user_id']).to eq user.id
+      expect(grids.first['id']).to eq grid.id
     end
   end
 
@@ -28,7 +28,7 @@ RSpec.describe 'Grids Integration Spec', type: :request do
       post '/grids', headers: { 'Authorization' => "#{token['auth_token']}" },
                      params: { width: 5, height: 5, number_of_mines: 8 }
       expect(response).to have_http_status(:success)
-      expect(user.grids.length).to be 1
+      expect(user.grids.length).to eq 1
     end
 
     it "returns errors when not valid" do
@@ -37,8 +37,8 @@ RSpec.describe 'Grids Integration Spec', type: :request do
                      params: { width: -1, height: 0 }
       expect(response).to have_http_status(422)
       errors = JSON.parse(response.body)
-      expect(errors.length).to be 4
-      expect(user.grids.length).to be 0
+      expect(errors.length).to eq 4
+      expect(user.grids.length).to eq 0
     end
   end
 
@@ -49,7 +49,7 @@ RSpec.describe 'Grids Integration Spec', type: :request do
 
       delete grid_path(id: grid.id), headers: { 'Authorization' => "#{token['auth_token']}" }
       expect(response).to have_http_status(:success)
-      expect(user.grids.length).to be 0
+      expect(user.grids.length).to eq 0
     end
 
     it "cannot destroy a grid from another user" do
@@ -59,7 +59,7 @@ RSpec.describe 'Grids Integration Spec', type: :request do
 
       delete grid_path(id: grid.id), headers: { 'Authorization' => "#{token['auth_token']}" }
       expect(response).to have_http_status(422)
-      expect(user2.grids.length).to be 1
+      expect(user2.grids.length).to eq 1
     end
   end
 end
