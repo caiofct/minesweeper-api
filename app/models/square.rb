@@ -28,7 +28,7 @@ class Square < ApplicationRecord
   end
 
   def toggle_flag!
-    attribute_updated = update_attribute :flagged, !flagged
+    attribute_updated = update_attribute(:flagged, !flagged)
     all_flagged = true
     # setting the game as won when all mines have been flagged
     grid.squares.where(mine: true).each do |mine_square|

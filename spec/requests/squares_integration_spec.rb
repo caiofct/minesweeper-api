@@ -36,7 +36,7 @@ RSpec.describe 'Squares Integration Spec', type: :request do
       square = JSON.parse(response.body)
 
       expect(grid.squares.first.id).to eq square['id']
-      expect(grid.squares.reload.first.flagged).to eq true
+      expect(grid.squares.reload.find_by_x_and_y(0,0).flagged).to eq true
     end
   end
 
@@ -51,7 +51,7 @@ RSpec.describe 'Squares Integration Spec', type: :request do
 
       put "/grids/#{grid.id}/squares/0/0/explore", headers: { 'Authorization' => "#{token['auth_token']}" }
       expect(response).to have_http_status(:success)
-      first_square = grid.squares.reload.first
+      first_square = grid.squares.reload.find_by_x_and_y(0,0)
       expect(first_square.explored).to eq true
       if first_square.mine
         expect(grid.status).to eq "game_over"
