@@ -6,4 +6,11 @@ class Grid < ApplicationRecord
 
   validates :width, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :height, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :number_of_mines, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: :squares_count }
+
+  private
+
+  def squares_count
+    width * height
+  end
 end

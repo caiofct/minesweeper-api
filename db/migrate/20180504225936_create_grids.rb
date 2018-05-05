@@ -3,7 +3,7 @@ class CreateGrids < ActiveRecord::Migration[5.2]
     create_table :grids do |t|
       t.integer :width
       t.integer :height
-      t.integer :status
+      t.integer :status, default: 1
       t.integer :number_of_mines
       t.references :user, foreign_key: true
 

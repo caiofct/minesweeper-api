@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018_05_04_225936) do
   create_table "grids", force: :cascade do |t|
     t.integer "width"
     t.integer "height"
-    t.integer "status"
+    t.integer "status", default: 1
     t.integer "number_of_mines"
     t.bigint "user_id"
     t.datetime "created_at", null: false
