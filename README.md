@@ -19,7 +19,7 @@ Below, are some examples to start using the api
 To create a new user, you can do:
 
 ```sh
-  curl -H "Content-Type: application/json" -X POST --form 'users[email]=example@mail.com' --form 'users[name]=Example User' --form 'users[password]=1q2w3e4r5t' https://caio-minesweeper-api.herokuapp.com/users
+curl -H "Content-Type: application/json" -X POST --form 'users[email]=example@mail.com' --form 'users[name]=Example User' --form 'users[password]=1q2w3e4r5t' https://caio-minesweeper-api.herokuapp.com/users
 ```
 
 To authenticate(it will return your user's token), do:
