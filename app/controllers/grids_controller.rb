@@ -35,6 +35,6 @@ class GridsController < ApplicationController
   private
 
   def grid_params
-    params.permit(:width, :height, :number_of_mines)
+    params.require(:grid).permit(:width, :height, :number_of_mines)
   end
 end

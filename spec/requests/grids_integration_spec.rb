@@ -26,7 +26,7 @@ RSpec.describe 'Grids Integration Spec', type: :request do
     it "returns http success when created" do
       token = authenticate(user)
       post '/grids', headers: { 'Authorization' => "#{token['auth_token']}" },
-                     params: { width: 5, height: 5, number_of_mines: 8 }
+                     params: { grid: { width: 5, height: 5, number_of_mines: 8 } }
       expect(response).to have_http_status(:success)
       expect(user.grids.length).to eq 1
     end
@@ -34,7 +34,7 @@ RSpec.describe 'Grids Integration Spec', type: :request do
     it "returns errors when not valid" do
       token = authenticate(user)
       post '/grids', headers: { 'Authorization' => "#{token['auth_token']}" },
-                     params: { width: -1, height: 0 }
+                     params: { grid: { width: -1, height: 0 } }
       expect(response).to have_http_status(422)
       errors = JSON.parse(response.body)
       expect(errors.length).to eq 4
