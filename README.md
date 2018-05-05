@@ -9,7 +9,7 @@ A simple minesweeper api that can allows for sign-up, sign-in, create a grid, to
 **To use the api you can follow the below postman documentation that describes all the available REST resources and endpoints**
 
 ```sh
-[API Documentation](https://documenter.getpostman.com/view/1681883/mines/RVuAA6Y1)
+https://documenter.getpostman.com/view/1681883/mines/RVuAA6Y1
 ```
 
 To run the project
@@ -28,5 +28,5 @@ $ rspec
 OR
 
 ```sh
-bundle exec rake spec
+$ bundle exec rake spec
 ```
